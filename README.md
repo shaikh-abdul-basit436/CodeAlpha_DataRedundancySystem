@@ -1,4 +1,3 @@
-@'
 # Data Redundancy Removal System
 
 A Flask and MySQL-based data quality system designed to validate incoming records, detect redundant data, prevent duplicate database entries, and provide administrators with tools to review and manage stored records.
