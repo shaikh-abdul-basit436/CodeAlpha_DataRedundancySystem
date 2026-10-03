@@ -53,7 +53,6 @@ The system also provides an administrative dashboard for searching, filtering, r
 
 ## 📂 Project Structure
 
-```text
 DataRedundancySystem/
 │
 ├── app/
