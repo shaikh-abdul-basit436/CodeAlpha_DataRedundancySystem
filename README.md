@@ -1,37 +1,37 @@
 # Data Redundancy Removal System
 
-A web-based **Data Redundancy Removal System** designed to validate records, detect duplicate or potentially redundant data, and maintain cleaner and more reliable database records.
+A web-based **Data Redundancy Removal System** designed to validate records, detect duplicate or potentially redundant data, and maintain clean and reliable database records.
 
-The system uses **Python, Flask, MySQL, HTML, CSS, and JavaScript** with rule-based validation and SHA-256 hashing for exact duplicate detection.
+The system uses **Python, Flask, MySQL, HTML, CSS, and JavaScript**, with **rule-based validation** and **SHA-256 hashing** for exact duplicate detection.
 
 ---
 
 ## 📌 Project Overview
 
-The Data Redundancy Removal System helps prevent unnecessary duplicate data from entering a database.
+The **Data Redundancy Removal System** helps prevent unnecessary duplicate records from entering a database.
 
-It validates incoming records, checks unique identifiers, detects exact duplicates, and identifies records that may require manual review.
+It validates incoming records, checks unique identifiers, detects exact duplicates, and identifies records that may require **manual administrative review**.
 
 The system also provides an administrative dashboard for searching, filtering, reviewing, approving, and deleting stored records.
 
-> 💡 **Note:** The system uses rule-based validation and classification. It does not use AI or machine learning.
+> **Note:** This project uses rule-based validation and classification. It does **not** use Artificial Intelligence or Machine Learning.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
 - 📝 **Data Validation** — Validates required fields and input formats.
 - 🔑 **Unique ID Protection** — Prevents duplicate unique identifiers.
-- 🔍 **Duplicate Detection** — Detects exact duplicate records using SHA-256 hashing.
+- 🔍 **Exact Duplicate Detection** — Uses SHA-256 hashing to identify exact duplicates.
 - ⚠️ **Review System** — Identifies potentially redundant records for manual review.
-- 👨‍💼 **Admin Dashboard** — Provides management of stored records.
-- 🔎 **Search** — Search records by ID, Unique ID, name, email, or phone.
-- 🏷️ **Status Filtering** — Filter records by Valid or Review status.
-- ✅ **Record Approval** — Review records can be marked as Valid.
-- 🗑️ **Record Deletion** — Delete unwanted records with confirmation.
-- 🔄 **Refresh Records** — Refresh the stored record list.
-- 🗄️ **MySQL Database** — Provides structured and persistent data storage.
-- 📱 **Responsive Interface** — Clean dashboard interface for record management.
+- 👨‍💼 **Admin Dashboard** — Provides centralized record management.
+- 🔎 **Search Records** — Search by ID, Unique ID, name, email, or phone.
+- 🏷️ **Status Filtering** — Filter records by `VALID` or `REVIEW`.
+- ✅ **Record Approval** — Convert review records to valid records.
+- 🗑️ **Record Deletion** — Remove unwanted records with confirmation.
+- 🔄 **Refresh Records** — Refresh the record list.
+- 🗄️ **MySQL Database** — Provides persistent structured data storage.
+- 📱 **Responsive Interface** — Clean and responsive dashboard UI.
 
 ---
 
@@ -39,20 +39,21 @@ The system also provides an administrative dashboard for searching, filtering, r
 
 | Category | Technology |
 |---|---|
-| Frontend | HTML, CSS, JavaScript |
-| Backend | Python, Flask |
-| Database | MySQL |
-| ORM | Flask-SQLAlchemy |
-| Database Driver | PyMySQL |
-| Duplicate Detection | SHA-256 Hashing |
-| Validation | Rule-Based |
-| Configuration | Python-dotenv |
-| Version Control | Git & GitHub |
+| **Frontend** | HTML, CSS, JavaScript |
+| **Backend** | Python, Flask |
+| **Database** | MySQL |
+| **ORM** | Flask-SQLAlchemy |
+| **Database Driver** | PyMySQL |
+| **Duplicate Detection** | SHA-256 Hashing |
+| **Validation** | Rule-Based Validation |
+| **Configuration** | Python-dotenv |
+| **Version Control** | Git & GitHub |
 
 ---
 
 ## 📂 Project Structure
 
+```text
 DataRedundancySystem/
 │
 ├── app/
@@ -76,45 +77,61 @@ DataRedundancySystem/
 ├── requirements.txt
 ├── run.py
 └── README.md
-
 ⚙️ How It Works
 
-The system follows a rule-based process to validate and classify incoming records.
+The system follows a rule-based validation and classification pipeline.
 
-User Input
-    ↓
-Data Validation
-    ↓
-Unique ID Check
-    ↓
-Duplicate Detection
-    ↓
-Redundancy Classification
-    ↓
-Database Storage / Review / Rejection
+                User Input
+                    │
+                    ▼
+            Data Validation
+                    │
+                    ▼
+           Unique ID Check
+                    │
+                    ▼
+          Duplicate Detection
+                    │
+                    ▼
+       Redundancy Classification
+                    │
+          ┌─────────┼─────────┐
+          ▼         ▼         ▼
+        VALID     REVIEW   DUPLICATE
+          │         │         │
+          ▼         ▼         ▼
+       Store     Admin     Reject
+       Record    Review     Record
 Process
-📝 The user enters a new record.
-✅ The system validates the submitted information.
-🔑 The Unique ID is checked against existing records.
-🔍 The system compares the incoming record with stored data.
-#️⃣ SHA-256 hashing is used to detect exact duplicate records.
+📝 User enters a new record.
+✅ System validates the submitted information.
+🔑 Unique ID is checked against existing records.
+🔍 Incoming data is compared with stored records.
+#️⃣ SHA-256 hashing is used for exact duplicate detection.
 ⚠️ Records with an existing email but different details are marked for review.
 💾 Valid records are stored in the database.
-👨‍💼 Administrators can manage stored records through the dashboard.
+👨‍💼 Administrators can review and manage records through the dashboard.
 🧠 Redundancy Classification
-✅ Valid
+✅ VALID
 
-A record is classified as Valid when it passes the implemented validation and redundancy checks and does not match an existing record.
+A record is classified as VALID when:
 
-⚠️ Review
+Required fields pass validation.
+The Unique ID does not already exist.
+The record does not match an existing record.
+No implemented redundancy rule flags the record for review.
+⚠️ REVIEW
 
-A record is classified as Review when the email already exists in the database but the complete record is not an exact duplicate.
+A record is classified as REVIEW when:
 
-The administrator can review the record and decide whether to keep it.
+The email already exists in the database.
+However, the complete record is not an exact duplicate.
 
-🚫 Duplicate
+The administrator can manually review the record and decide whether it should be retained.
 
-A record is treated as a Duplicate when its normalized data matches an existing record.
+🚫 DUPLICATE
+
+A record is classified as DUPLICATE when its normalized data matches an existing record.
 
 Exact duplicate records are rejected to prevent redundant data from entering the database.
 
@@ -122,43 +139,56 @@ Exact duplicate records are rejected to prevent redundant data from entering the
 
 The system uses SHA-256 hashing to detect exact duplicate records.
 
-The following information is normalized and used to generate the hash:
+The following fields are normalized before generating the hash:
 
 Name
 Email
 Phone
-
-The generated hash is compared with existing records.
-
-If the hash matches an existing record, the incoming record is identified as an exact duplicate.
-
+Detection Process
+Record Data
+     │
+     ▼
+Normalize Data
+     │
+     ▼
+Generate SHA-256 Hash
+     │
+     ▼
+Compare With Existing Hashes
+     │
+     ├── Match ──► DUPLICATE
+     │
+     └── No Match ──► Continue Validation
 👨‍💼 Admin Dashboard
 
-The administration section provides control over stored records.
+The administrative dashboard provides centralized control over stored records.
 
-Administrators can:
-
+Available Operations
 🔎 Search records
 🏷️ Filter records by status
 👀 Review potentially redundant records
-✅ Keep review records and mark them as Valid
-🗑️ Delete records
+✅ Approve review records
+🗑️ Delete unwanted records
 🔄 Refresh the record list
+Searchable Fields
 
-This provides a simple way to maintain data quality after records have been submitted.
+Administrators can search using:
 
+Database ID
+Unique ID
+Name
+Email
+Phone
 🛡️ Data Integrity
 
-The system uses multiple checks to maintain database accuracy:
+The system uses multiple layers of validation to maintain database quality:
 
-🔑 Unique identifier protection
-✅ Input validation
-#️⃣ SHA-256-based duplicate detection
-⚠️ Manual review for potentially related records
-🗄️ Structured database storage
-
-These checks help reduce invalid and redundant data while maintaining administrative control over stored records.
-
+Check	Purpose
+🔑 Unique ID Protection	Prevents duplicate identifiers
+✅ Input Validation	Ensures valid input
+#️⃣ SHA-256 Hashing	Detects exact duplicates
+⚠️ Manual Review	Handles potentially redundant records
+🗄️ MySQL Storage	Maintains structured persistent data
 🚀 Getting Started
 📋 Prerequisites
 
@@ -167,51 +197,84 @@ Make sure the following are installed:
 🐍 Python 3.x
 🗄️ MySQL 8.x
 🔧 Git
-🌐 Modern web browser
-📥 Installation
+🌐 Modern Web Browser
 1. Clone the Repository
 git clone https://github.com/shaikh-abdul-basit436/DataRedundancySystem.git
 cd DataRedundancySystem
 2. Create a Virtual Environment
 python -m venv venv
 3. Activate the Virtual Environment
+Windows PowerShell
 .\venv\Scripts\Activate.ps1
+Windows CMD
+venv\Scripts\activate
 4. Install Dependencies
 pip install -r requirements.txt
 5. Configure Environment Variables
 
-Create a .env file in the project root and configure the required MySQL database connection details.
+Create a .env file in the project root and configure your MySQL database connection.
 
-🔒 Security: Do not commit database credentials or other sensitive information to GitHub.
+Example:
 
+DATABASE_URL=mysql+pymysql://username:password@localhost/database_name
+
+🔒 Security: Never commit database credentials, passwords, API keys, or other sensitive information to GitHub.
+
+Add .env to .gitignore:
+
+.env
+venv/
+__pycache__/
 6. Start the Application
 python run.py
 
-Open the local Flask server address displayed in the terminal in your web browser.
+The Flask server will start locally.
+
+Open the local server URL displayed in the terminal in your web browser.
 
 🖥️ Using the Application
 ➕ Add a Record
 Enter the Unique ID.
-Enter the name.
-Enter the email address.
-Optionally enter a phone number.
+Enter the Name.
+Enter the Email Address.
+Optionally enter the Phone Number.
 Submit the record.
 The system validates and classifies the record.
-🔍 Duplicate Record
+🔍 Exact Duplicate
 
-If an exact duplicate is detected, the system rejects the new record and displays a duplicate notification.
+If an exact duplicate is detected:
+
+Incoming Record
+       ↓
+SHA-256 Comparison
+       ↓
+Existing Hash Found
+       ↓
+DUPLICATE
+       ↓
+Record Rejected
+
+The system prevents the redundant record from being inserted.
 
 ⚠️ Review Record
 
 If the email already exists but the complete record is different:
 
-The record is classified as REVIEW.
-The record is displayed in the admin dashboard.
-The administrator can select Keep to mark it as VALID.
-The administrator can delete the record if it should not be retained.
-🔎 Search and Filter
+Existing Email Found
+        ↓
+Record Is Not Exact Duplicate
+        ↓
+REVIEW
+        ↓
+Admin Dashboard
 
-Administrators can search records using:
+The administrator can:
+
+✅ Keep the record and mark it as VALID
+🗑️ Delete the record
+🔎 Search & Filtering
+
+The admin dashboard supports searching records by:
 
 Database ID
 Unique ID
@@ -219,19 +282,11 @@ Name
 Email
 Phone
 
-Records can also be filtered by status.
+Records can also be filtered by status:
 
-🎯 Project Objective
-
-The main objective of this project is to build a system that helps maintain clean, consistent, and non-redundant data.
-
-The system focuses on:
-
-Validating incoming records
-Preventing duplicate identifiers
-Detecting exact duplicate records
-Identifying potentially redundant information
-Providing administrative control over stored records
+ALL
+VALID
+REVIEW
 📊 Project Highlights
 Area	Implementation
 Data Validation	Rule-Based Validation
@@ -239,12 +294,27 @@ Duplicate Detection	SHA-256 Hashing
 Database	MySQL
 Backend	Flask
 Frontend	HTML, CSS & JavaScript
+ORM	Flask-SQLAlchemy
+Database Driver	PyMySQL
 Record Management	Search, Filter, Review & Delete
-Data Storage	MySQL
 Configuration	Environment Variables
+Version Control	Git & GitHub
+🎯 Project Objective
+
+The primary objective of this project is to develop a system that helps maintain clean, consistent, and non-redundant database records.
+
+The system focuses on:
+
+Validating incoming records
+Preventing duplicate identifiers
+Detecting exact duplicate records
+Identifying potentially redundant information
+Providing administrative review
+Maintaining structured database storage
+Supporting efficient record management
 📚 Learning Outcomes
 
-This project provided practical experience with:
+Through this project, practical experience was gained in:
 
 🐍 Python and Flask
 🗄️ MySQL database integration
@@ -255,9 +325,10 @@ This project provided practical experience with:
 🛠️ Git and GitHub
 📦 Python virtual environments
 🔧 Environment-based configuration
+🗃️ Database management
 🔮 Future Enhancements
 
-Possible improvements for future versions include:
+Possible future improvements include:
 
 🤖 Fuzzy duplicate detection
 📂 Bulk CSV/Excel data import
@@ -268,19 +339,22 @@ Possible improvements for future versions include:
 🧪 Automated testing
 🚀 Production deployment
 📌 Project Status
-
 ✅ Completed
 
-The current version includes the core functionality for:
+The current version includes:
 
-Data validation
-Duplicate detection
-Redundancy classification
-MySQL database storage
-Record search and filtering
-Administrative review
-Record approval
-Record deletion
+✅ Data validation
+✅ Unique ID protection
+✅ Exact duplicate detection
+✅ SHA-256 hashing
+✅ Redundancy classification
+✅ MySQL database storage
+✅ Record search
+✅ Status filtering
+✅ Administrative review
+✅ Record approval
+✅ Record deletion
+✅ Responsive interface
 🔗 Repository
 
 GitHub:
@@ -297,6 +371,7 @@ HTML/CSS/JavaScript
 Data validation
 Duplicate detection
 Database management
+Git & GitHub
 📄 License
 
 This project was developed for educational and internship purposes.
