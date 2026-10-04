@@ -118,5 +118,24 @@ def delete_record(record_id):
         "status": "success",
         "message": "Record deleted successfully."
     })
+
+@app.route("/api/records/<int:record_id>/approve", methods=["PATCH"])
+def approve_record(record_id):
+    record = Record.query.get(record_id)
+
+    if not record:
+        return jsonify({
+            "status": "error",
+            "message": "Record not found."
+        }), 404
+
+    record.status = "valid"
+    db.session.commit()
+
+    return jsonify({
+        "status": "success",
+        "message": "Record marked as valid."
+    })
 if __name__ == "__main__":
     app.run(debug=True)
+

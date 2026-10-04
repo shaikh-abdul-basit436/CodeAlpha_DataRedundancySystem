@@ -43,19 +43,34 @@
                 </button>
             </div>
 
-            <div class="table-wrapper">
+            <div class="admin-controls">
+    <input
+        id="searchRecords"
+        type="text"
+        placeholder="Search by ID, name, email, or phone..."
+    >
+
+    <select id="statusFilter">
+        <option value="all">All Status</option>
+        <option value="valid">Valid</option>
+        <option value="review">Review</option>
+    </select>
+</div>
+
+<div class="table-wrapper">
                 <table>
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Unique ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Status</th>
-                            <th>Created At</th>
-                        </tr>
-                    </thead>
+    <tr>
+        <th>ID</th>
+        <th>Unique ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Action</th>
+    </tr>
+</thead>
 
                     <tbody id="recordsTableBody">
                         <tr>
@@ -73,3 +88,7 @@
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
+
+
+
+

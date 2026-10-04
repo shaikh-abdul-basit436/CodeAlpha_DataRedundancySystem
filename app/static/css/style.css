@@ -288,3 +288,128 @@ tbody tr:hover {
     box-shadow: none;
     transform: translateY(-1px);
 }
+.approve-btn {
+    margin: 0 6px 0 0;
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: rgba(34, 197, 94, 0.12);
+    color: #86efac;
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    font-size: 12px;
+    box-shadow: none;
+}
+
+.approve-btn:hover {
+    background: rgba(34, 197, 94, 0.22);
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+
+.actions {
+    white-space: nowrap;
+}
+
+.approve-btn,
+.delete-btn {
+    display: inline-block;
+    width: auto;
+    margin: 0 4px 0 0;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    box-shadow: none;
+}
+
+.approve-btn {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.approve-btn:hover {
+    background: rgba(34, 197, 94, 0.25);
+    box-shadow: none;
+}
+
+.delete-btn {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.25);
+    box-shadow: none;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status.valid {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+}
+
+.status.review {
+    background: rgba(234, 179, 8, 0.15);
+    color: #fde68a;
+}
+
+.status.duplicate {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+}
+.table-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    white-space: nowrap;
+}
+
+.actions {
+    min-width: 150px;
+}
+.admin-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.admin-controls input {
+    flex: 1;
+    margin: 0;
+}
+
+.admin-controls select {
+    padding: 14px 16px;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    outline: none;
+    background: rgba(30, 41, 59, 0.75);
+    color: #f8fafc;
+    font-size: 14px;
+}
+
+.admin-controls select:focus {
+    border-color: #6366f1;
+}
+
+@media (max-width: 600px) {
+    .admin-controls {
+        flex-direction: column;
+    }
+}
