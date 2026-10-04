@@ -102,49 +102,64 @@ The system follows a rule-based validation and classification pipeline.
           ▼         ▼         ▼
        Store     Admin     Reject
        Record    Review     Record
-Process
-📝 User enters a new record.
-✅ System validates the submitted information.
-🔑 Unique ID is checked against existing records.
-🔍 Incoming data is compared with stored records.
-#️⃣ SHA-256 hashing is used for exact duplicate detection.
-⚠️ Records with an existing email but different details are marked for review.
-💾 Valid records are stored in the database.
-👨‍💼 Administrators can review and manage records through the dashboard.
-🧠 Redundancy Classification
-✅ VALID
+## ⚙️ Process
 
-A record is classified as VALID when:
+1. 📝 User enters a new record.
+2. ✅ System validates the submitted information.
+3. 🔑 Unique ID is checked against existing records.
+4. 🔍 Incoming data is compared with stored records.
+5. #️⃣ SHA-256 hashing is used for exact duplicate detection.
+6. ⚠️ Records with an existing email but different details are marked for review.
+7. 💾 Valid records are stored in the database.
+8. 👨‍💼 Administrators can review and manage records through the dashboard.
 
-Required fields pass validation.
-The Unique ID does not already exist.
-The record does not match an existing record.
-No implemented redundancy rule flags the record for review.
-⚠️ REVIEW
+---
 
-A record is classified as REVIEW when:
+# 🧠 Redundancy Classification
 
-The email already exists in the database.
-However, the complete record is not an exact duplicate.
+## ✅ VALID
+
+A record is classified as **VALID** when:
+
+- Required fields pass validation.
+- The Unique ID does not already exist.
+- The record does not match an existing record.
+- No implemented redundancy rule flags the record for review.
+
+---
+
+## ⚠️ REVIEW
+
+A record is classified as **REVIEW** when:
+
+- The email already exists in the database.
+- However, the complete record is not an exact duplicate.
 
 The administrator can manually review the record and decide whether it should be retained.
 
-🚫 DUPLICATE
+---
 
-A record is classified as DUPLICATE when its normalized data matches an existing record.
+## 🚫 DUPLICATE
+
+A record is classified as **DUPLICATE** when its normalized data matches an existing record.
 
 Exact duplicate records are rejected to prevent redundant data from entering the database.
 
-🔐 Duplicate Detection
+---
 
-The system uses SHA-256 hashing to detect exact duplicate records.
+# 🔐 Duplicate Detection
+
+The system uses **SHA-256 hashing** to detect exact duplicate records.
 
 The following fields are normalized before generating the hash:
 
-Name
-Email
-Phone
-Detection Process
+- Name
+- Email
+- Phone
+
+### Detection Process
+
+```text
 Record Data
      │
      ▼
@@ -181,7 +196,7 @@ Email
 Phone
 🛡️ Data Integrity
 
-The system uses multiple layers of validation to maintain database quality:
+The system uses multiple layers of validation to maintain database quality.
 
 Check	Purpose
 🔑 Unique ID Protection	Prevents duplicate identifiers
@@ -220,7 +235,7 @@ DATABASE_URL=mysql+pymysql://username:password@localhost/database_name
 
 🔒 Security: Never commit database credentials, passwords, API keys, or other sensitive information to GitHub.
 
-Add .env to .gitignore:
+Add the following to .gitignore:
 
 .env
 venv/
@@ -355,12 +370,13 @@ The current version includes:
 ✅ Record approval
 ✅ Record deletion
 ✅ Responsive interface
-🔗 Repository
+🔗 Repository & Live Demo
+GitHub Repository
 
-GitHub:
 https://github.com/shaikh-abdul-basit436/DataRedundancySystem
 
-Live link:
+🌐 Live Demo
+
 https://data-redundancy-system-w21x.onrender.com
 
 👨‍💻 Developed For
