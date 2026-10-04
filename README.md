@@ -78,7 +78,7 @@ DataRedundancySystem/
 ├── run.py
 └── README.md
 ⚙️ How It Works
-
+```
 The system follows a rule-based validation and classification pipeline.
 
                 User Input
@@ -359,6 +359,9 @@ The current version includes:
 
 GitHub:
 https://github.com/shaikh-abdul-basit436/DataRedundancySystem
+
+Live link:
+https://data-redundancy-system-w21x.onrender.com
 
 👨‍💻 Developed For
 
